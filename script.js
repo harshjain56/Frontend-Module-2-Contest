@@ -10,7 +10,21 @@ let table=document.getElementById("Student-data-display")
 let tableBody=document.getElementById("table-Body")
 let studentInfoSection=document.getElementById("students-Information")
 
+let tableContainer=document.getElementById("table-container")
 
+
+
+// let femaleGenderTable=document.createElement("table")
+// femaleGenderTable.className="Student-data-display"
+// femaleGenderTable.cellSpacing="0"
+
+// let maleGendertable=document.createElement("table")
+// maleGendertable.className="Student-data-display"
+// femaleGenderTable.cellSpacing="0"
+
+// // let OtherGenderTable=document.createElement("table")
+// // OtherGenderTable.className="Student-data-display"
+// // OtherGenderTable.cellSpacing="0"
 
 
 
@@ -31,6 +45,9 @@ async function fetchingData(){
 
 fetchingData().then((studentData)=>{
    displaydata(studentData)
+   searchButton.addEventListener("click",()=>{
+    filterData(studentData)
+   })
    sortAtoZButton.addEventListener("click" ,()=>{
     sortAtoZ(studentData)
    })
@@ -50,6 +67,44 @@ fetchingData().then((studentData)=>{
     sortByGender(studentData)
    })
 })
+
+
+
+function filterData(studentData){
+    let searchString=searchBar.value
+    
+    let filteredData=[]
+   
+   studentData.forEach((student)=>{
+        let dataString1=student.first_name.toUpperCase()
+        let dataString2=student.first_name.toLowerCase()
+        
+        let dataString3=student.last_name.toUpperCase()
+        let dataString4=student.last_name.toLowerCase()
+
+        let dataString5=student.email.toUpperCase()
+        let dataString6=student.email.toLowerCase()
+
+        if(dataString1.includes(searchString)||dataString2.includes(searchString)){
+            filteredData.push(student)
+            
+        }
+
+        else if(dataString3.includes(searchString)||dataString4.includes(searchString)){
+            filteredData.push(student)
+            
+        }
+
+        else if(dataString5.includes(searchString)||dataString6.includes(searchString)){
+            filteredData.push(student)
+        }
+
+    })
+
+
+     
+    displaydata(filteredData)
+}
 
 function displaydata(studentData) {
     tableBody.innerHTML=""
@@ -197,7 +252,221 @@ displaydata(sortedClassArray)
 }
 
 
+function sortByGender(studentData){
+    let maleGenderArray=[]
+    let femaleGenderArray=[]
+    let otherGenderArray=[]
+    studentData.forEach((student)=>{
+        if(student.gender==="Male"){
+          maleGenderArray.push(student)
+        }
+        else if(student.gender==="Female"){
+            femaleGenderArray.push(student)
+        }
+        else{
+            otherGenderArray.push(student)
+        }
+    })
 
+
+ displaySortedGenderData(maleGenderArray, femaleGenderArray, otherGenderArray)
+
+    
+    
+}
+
+
+function displaySortedGenderData(maleData, femaleData, othersData){
+    tableBody.innerHTML=""
+    maleData.forEach(student=> {
+      let tableRow= document.createElement("tr") 
+
+    let id=document.createElement("td")
+    id.innerText=student.id
+
+    let nameAndImage=document.createElement("td")
+    let nameColumn=document.createElement("div")
+    nameColumn.className="nameColumn"
+    let img=document.createElement("img")
+    img.src=student.img_src
+    let name=document.createElement("p")
+    name.innerText=`${student.first_name} ${student.last_name}`
+
+    nameColumn.appendChild(img)
+    nameColumn.appendChild(name)
+    nameAndImage.appendChild(nameColumn)
+
+
+    let gender=document.createElement("td")
+    gender.innerText=student.gender
+
+    let Class=document.createElement("td")
+    Class.innerText=student.class
+
+    let marks=document.createElement("td")
+    marks.innerText=student.marks
+
+    let passStatus=document.createElement("td")
+    if(student.passing===true){
+        passStatus.innerText="Passed"
+    }
+    else{
+        passStatus.innerText="Failed"
+    }
+
+    let email=document.createElement("td")
+    email.innerText=student.email
+   
+
+   
+    tableRow.appendChild(id)
+    tableRow.appendChild(nameAndImage)
+    tableRow.appendChild(gender)
+    tableRow.appendChild(Class)
+    tableRow.appendChild(marks)
+    tableRow.appendChild(passStatus)
+    tableRow.appendChild(email)
+
+    tableBody.appendChild(tableRow)
+   
+
+    });
+
+    femaleData.forEach(student=> {
+        let tableRow= document.createElement("tr") 
+  
+      let id=document.createElement("td")
+      id.innerText=student.id
+  
+      let nameAndImage=document.createElement("td")
+      let nameColumn=document.createElement("div")
+      nameColumn.className="nameColumn"
+      let img=document.createElement("img")
+      img.src=student.img_src
+      let name=document.createElement("p")
+      name.innerText=`${student.first_name} ${student.last_name}`
+  
+      nameColumn.appendChild(img)
+      nameColumn.appendChild(name)
+      nameAndImage.appendChild(nameColumn)
+  
+  
+      let gender=document.createElement("td")
+      gender.innerText=student.gender
+  
+      let Class=document.createElement("td")
+      Class.innerText=student.class
+  
+      let marks=document.createElement("td")
+      marks.innerText=student.marks
+  
+      let passStatus=document.createElement("td")
+      if(student.passing===true){
+          passStatus.innerText="Passed"
+      }
+      else{
+          passStatus.innerText="Failed"
+      }
+  
+      let email=document.createElement("td")
+      email.innerText=student.email
+     
+  
+     
+      tableRow.appendChild(id)
+      tableRow.appendChild(nameAndImage)
+      tableRow.appendChild(gender)
+      tableRow.appendChild(Class)
+      tableRow.appendChild(marks)
+      tableRow.appendChild(passStatus)
+      tableRow.appendChild(email)
+  
+      tableBody.appendChild(tableRow)
+     
+  
+      });
+
+      othersData.forEach(student=> {
+        let tableRow= document.createElement("tr") 
+  
+      let id=document.createElement("td")
+      id.innerText=student.id
+  
+      let nameAndImage=document.createElement("td")
+      let nameColumn=document.createElement("div")
+      nameColumn.className="nameColumn"
+      let img=document.createElement("img")
+      img.src=student.img_src
+      let name=document.createElement("p")
+      name.innerText=`${student.first_name} ${student.last_name}`
+  
+      nameColumn.appendChild(img)
+      nameColumn.appendChild(name)
+      nameAndImage.appendChild(nameColumn)
+  
+  
+      let gender=document.createElement("td")
+      gender.innerText=student.gender
+  
+      let Class=document.createElement("td")
+      Class.innerText=student.class
+  
+      let marks=document.createElement("td")
+      marks.innerText=student.marks
+  
+      let passStatus=document.createElement("td")
+      if(student.passing===true){
+          passStatus.innerText="Passed"
+      }
+      else{
+          passStatus.innerText="Failed"
+      }
+  
+      let email=document.createElement("td")
+      email.innerText=student.email
+     
+  
+     
+      tableRow.appendChild(id)
+      tableRow.appendChild(nameAndImage)
+      tableRow.appendChild(gender)
+      tableRow.appendChild(Class)
+      tableRow.appendChild(marks)
+      tableRow.appendChild(passStatus)
+      tableRow.appendChild(email)
+  
+      tableBody.appendChild(tableRow)
+     
+  
+      });
+
+
+
+
+
+
+
+
+
+    table.appendChild(tableBody)
 
 }
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
 
