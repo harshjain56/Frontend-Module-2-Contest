@@ -1,0 +1,82 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.title {
+    font-weight: 900;
+    padding: 15px;
+}
+
+.students-Information {
+    background-color: rgb(217, 217, 217);
+    padding: 15px;
+}
+
+.searchTab {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.searchTab>input {
+    background-color: rgb(217, 217, 217);
+    color: rgb(41, 40, 40);
+    font-weight: 400;
+    padding: 12px 10px;
+    flex-grow: 1;
+}
+
+.searchTab>button {
+    background-color: black;
+    color: white;
+    padding: 12px 10px;
+    border: none;
+}
+
+.sort-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.sort-container>button {
+    padding: 12px 10px;
+    width: 12%;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+
+
+.Student-data-display {
+    border: 1px solid grey;
+    color: black;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+
+.Student-data-display td {
+   
+    border: 1px solid grey;
+    padding: 5px 10px;
+}
+
+.nameColumn {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nameColumn>img {
+    width: 30px;
+}

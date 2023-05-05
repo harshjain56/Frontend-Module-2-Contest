@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Upper Heading -->
+    <div class="title">
+        <p> Student Portal</p>
+    </div>
+
+    <!-- The Information, Searching and Sorting Section -->
+
+    <div class="students-Information" id="students-Information">
+
+        <!-- search section -->
+
+        <section class="searchTab">
+            <input type="text" placeholder="Search" id="search-bar">
+            <button id="search-button">Search</button>
+        </section>
+
+        <!-- sorting section -->
+
+        <section class="sort-container">
+            <button id="sortA-Z">Sort A-Z</button>
+            <button id="sortZ-A">Sort Z-A</button>
+            <button id="sortByMarks">Sort By Marks</button>
+            <button id="sortByPassing">Sort By Passing</button>
+            <button id="sortByClass">Sort By Class</button>
+            <button id="sortByGender">Sort By Gender</button>
+        </section>
+
+
+        <!-- student data display -->
+
+        <table class="Student-data-display" cellspacing="0" id="Student-data-display">
+            <thead>
+                <tr style="font-weight: 800;">
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Gender</td>
+                    <td>Class</td>
+                    <td>Marks</td>
+                    <td>Passing</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
+
+            <tbody id="table-Body">
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+
+
+
+
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
