@@ -225,7 +225,7 @@ function sortByGender(studentData){
         }
     })
 
-   displaydata(otherGenderArray)
+  
 
 //  function displayFemaleGender(femaleGenderArray){
 //         femaleGenderArray.forEach(student=> {
